@@ -1,8 +1,3 @@
-%global ghc_version 6.10.1
-
-%global pkg_libdir %{_libdir}/ghc-%{ghc_version}/%{name}-%{version}
-%global pkg_docdir %{_docdir}/ghc/libraries/%{name}-%{version}
-
 %bcond_without doc
 %bcond_without prof
 
@@ -11,7 +6,7 @@
 
 Name:           hscolour
 Version:        1.12
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Colourizes Haskell code
 
 Group:          Development/Tools
@@ -21,12 +16,13 @@ Source0:        http://hackage.haskell.org/packages/archive/%{name}/%{version}/%
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 # fedora ghc archs:
 ExclusiveArch:  %{ix86} x86_64 ppc alpha
-BuildRequires:  ghc = %{ghc_version}
+# for latest macros.ghc
+BuildRequires:  ghc >= 6.10.2-3
 %if %{with doc}
-BuildRequires:  ghc-doc = %{ghc_version}
+BuildRequires:  ghc-doc
 %endif
 %if %{with prof}
-BuildRequires:  ghc-prof = %{ghc_version}
+BuildRequires:  ghc-prof
 %endif
 
 %description
@@ -77,7 +73,7 @@ This package contains profiling libraries for %{name}.
 
 
 %build
-%cabal_configure --ghc %{!?without_prof:-p}
+%cabal_configure --ghc %{?with_prof:-p}
 %cabal build
 %if %{with doc}
 %cabal haddock
@@ -131,9 +127,8 @@ fi
 
 
 %if %{with doc}
-%files -n ghc-%{name}-doc
+%files -n ghc-%{name}-doc -f ghc-%{name}-doc.files
 %defattr(-,root,root,-)
-%{pkg_docdir}
 %endif
 
 
@@ -144,6 +139,9 @@ fi
 
 
 %changelog
+* Sat Apr 25 2009 Jens Petersen <petersen@redhat.com> - 1.12-3
+- sync with cabal2spec-0.15
+
 * Tue Mar 10 2009 Jens Petersen <petersen@redhat.com> - 1.12-2
 - fix url (#488665)
 - fix HsColour permissions (#488665)
