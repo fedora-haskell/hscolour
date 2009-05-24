@@ -5,8 +5,8 @@
 %global debug_package %{nil}
 
 Name:           hscolour
-Version:        1.12
-Release:        3%{?dist}
+Version:        1.13
+Release:        1%{?dist}
 Summary:        Colourizes Haskell code
 
 Group:          Development/Tools
@@ -16,8 +16,7 @@ Source0:        http://hackage.haskell.org/packages/archive/%{name}/%{version}/%
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 # fedora ghc archs:
 ExclusiveArch:  %{ix86} x86_64 ppc alpha
-# for latest macros.ghc
-BuildRequires:  ghc >= 6.10.2-3
+BuildRequires:  ghc, ghc-rpm-macros
 %if %{with doc}
 BuildRequires:  ghc-doc
 %endif
@@ -64,7 +63,8 @@ Requires: ghc-%{name}-devel = %{version}-%{release}
 Requires: ghc-prof = %{ghc_version}
 
 %description -n ghc-%{name}-prof
-This package contains profiling libraries for %{name}.
+This package contains profiling libraries for %{name}
+built for ghc-%{ghc_version}.
 %endif
 
 
@@ -139,6 +139,10 @@ fi
 
 
 %changelog
+* Sun May 24 2009 Jens Petersen <petersen@redhat.com> - 1.13-1
+- update to 1.13
+- buildrequires ghc-rpm-macros (cabal2spec-0.16)
+
 * Sat Apr 25 2009 Jens Petersen <petersen@redhat.com> - 1.12-3
 - sync with cabal2spec-0.15
 
