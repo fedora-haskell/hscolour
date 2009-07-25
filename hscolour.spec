@@ -6,7 +6,7 @@
 
 Name:           hscolour
 Version:        1.13
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Colourizes Haskell code
 
 Group:          Development/Tools
@@ -139,6 +139,9 @@ fi
 
 
 %changelog
+* Fri Jul 24 2009 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.13-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_12_Mass_Rebuild
+
 * Sun May 24 2009 Jens Petersen <petersen@redhat.com> - 1.13-1
 - update to 1.13
 - buildrequires ghc-rpm-macros (cabal2spec-0.16)
