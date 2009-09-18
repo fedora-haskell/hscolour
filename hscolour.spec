@@ -5,8 +5,8 @@
 %global debug_package %{nil}
 
 Name:           hscolour
-Version:        1.13
-Release:        2%{?dist}
+Version:        1.15
+Release:        1%{?dist}
 Summary:        Colourizes Haskell code
 
 Group:          Development/Tools
@@ -139,6 +139,9 @@ fi
 
 
 %changelog
+* Fri Sep 18 2009 Jens Petersen <petersen@redhat.com> - 1.15-1
+- update to 1.15
+
 * Fri Jul 24 2009 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.13-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_12_Mass_Rebuild
 
