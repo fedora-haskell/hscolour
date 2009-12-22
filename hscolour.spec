@@ -7,7 +7,7 @@
 
 Name:           hscolour
 Version:        1.15
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Colourizes Haskell code
 
 Group:          Development/Tools
@@ -47,7 +47,7 @@ Requires:       ghc = %{ghc_version}
 Requires(post): ghc = %{ghc_version}
 Requires(postun): ghc = %{ghc_version}
 %if %{with shared}
-Requires:       %{name} = %{version}-%{release}
+Requires:       ghc-%{name} = %{version}-%{release}
 %endif
 
 %description -n ghc-%{name}-devel
@@ -162,6 +162,9 @@ fi
 
 
 %changelog
+* Wed Dec 23 2009 Jens Petersen <petersen@redhat.com> - 1.15-3
+- devel package requires shared library not base
+
 * Wed Dec 23 2009 Jens Petersen <petersen@redhat.com> - 1.15-2
 - update spec for ghc-6.12.1
 - added shared library support: needs ghc-rpm-macros 0.3.1
