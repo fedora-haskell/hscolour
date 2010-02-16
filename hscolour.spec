@@ -12,8 +12,8 @@ HTML 3.2 with font tags, HTML 4.01 with CSS, LaTeX, and mIRC chat codes.
 %global debug_package %{nil}
 
 Name:           %{pkg_name}
-Version:        1.15
-Release:        4%{?dist}
+Version:        1.16
+Release:        1%{?dist}
 Summary:        Colourizes Haskell code
 
 Group:          Development/Tools
@@ -63,6 +63,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Mon Feb 15 2010 Conrad Meyer <konrad@tylerc.org> - 1.16-1
+- Bump to 1.16
+
 * Mon Jan 11 2010 Jens Petersen <petersen@redhat.com> - 1.15-4
 - update to ghc-rpm-macros-0.5.1 and cabal2spec-0.21.1:
 - drop doc and prof bcond
