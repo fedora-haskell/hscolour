@@ -13,7 +13,7 @@ HTML 3.2 with font tags, HTML 4.01 with CSS, LaTeX, and mIRC chat codes.
 
 Name:           %{pkg_name}
 Version:        1.16
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Colourizes Haskell code
 
 Group:          Development/Tools
