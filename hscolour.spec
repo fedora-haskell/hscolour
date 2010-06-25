@@ -13,18 +13,18 @@ HTML 3.2 with font tags, HTML 4.01 with CSS, LaTeX, and mIRC chat codes.
 
 Name:           %{pkg_name}
 Version:        1.16
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Colourizes Haskell code
 
 Group:          Development/Tools
 License:        GPLv2+
 URL:            http://www.cs.york.ac.uk/fp/darcs/hscolour/
 Source0:        http://hackage.haskell.org/packages/archive/%{name}/%{version}/%{name}-%{version}.tar.gz
+BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 # fedora ghc archs:
 ExclusiveArch:  %{ix86} x86_64 ppc alpha
-BuildRequires:  ghc, ghc-rpm-macros >= 0.5.1
-BuildRequires:  ghc-doc
-BuildRequires:  ghc-prof
+BuildRequires:  ghc, ghc-doc, ghc-prof
+BuildRequires:  ghc-rpm-macros >= 0.6.0
 %{?ghc_pkg_deps:BuildRequires:  %{ghc_pkg_deps}, %(echo %{ghc_pkg_deps} | sed -e "s/\(ghc-[^, ]\+\)-devel/\1-doc,\1-prof/g")}
 
 %description
@@ -37,7 +37,7 @@ BuildRequires:  ghc-prof
 %{_datadir}/%{name}-%{version}
 
 
-%ghc_binlib_package
+%{?ghc_binlib_package}
 
 
 %prep
@@ -52,10 +52,12 @@ BuildRequires:  ghc-prof
 
 
 %install
+rm -rf $RPM_BUILD_ROOT
 %cabal_install
 %cabal_pkg_conf
 
 %ghc_gen_filelists
+%ghc_strip_dynlinked
 
 
 %clean
@@ -63,6 +65,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Sat Jun 26 2010 Jens Petersen <petersen@redhat.com> - 1.16-3
+- strip dynlinked files (cabal2spec-0.21.4)
+
 * Mon Feb 15 2010 Conrad Meyer <konrad@tylerc.org> - 1.16-1
 - Bump to 1.16
 
