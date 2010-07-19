@@ -1,3 +1,5 @@
+# Updated to cabal2spec-0.22.2 and ghc-rpm-macros-0.8.1
+
 %global pkg_name hscolour
 
 %global common_summary Haskell %{pkg_name} library
@@ -7,13 +9,14 @@ It currently has five output formats: ANSI terminal codes,\
 HTML 3.2 with font tags, HTML 4.01 with CSS, LaTeX, and mIRC chat codes.
 
 %bcond_without shared
+%bcond_without hscolour
 
 # debuginfo is not useful for ghc
 %global debug_package %{nil}
 
 Name:           %{pkg_name}
-Version:        1.16
-Release:        3%{?dist}
+Version:        1.17
+Release:        1%{?dist}
 Summary:        Colourizes Haskell code
 
 Group:          Development/Tools
@@ -24,7 +27,10 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 # fedora ghc archs:
 ExclusiveArch:  %{ix86} x86_64 ppc alpha
 BuildRequires:  ghc, ghc-doc, ghc-prof
-BuildRequires:  ghc-rpm-macros >= 0.6.0
+BuildRequires:  ghc-rpm-macros >= 0.8.1
+%if %{with hscolour}
+BuildRequires:  hscolour
+%endif
 %{?ghc_pkg_deps:BuildRequires:  %{ghc_pkg_deps}, %(echo %{ghc_pkg_deps} | sed -e "s/\(ghc-[^, ]\+\)-devel/\1-doc,\1-prof/g")}
 
 %description
@@ -37,34 +43,32 @@ BuildRequires:  ghc-rpm-macros >= 0.6.0
 %{_datadir}/%{name}-%{version}
 
 
-%{?ghc_binlib_package}
-
-
 %prep
 %setup -q
 
 
 %build
-# dynamic + prof breaks cabal looking for p_dyn
-%cabal_configure --ghc -p
-%cabal build
-%cabal haddock
+%ghc_lib_build
 
 
 %install
 rm -rf $RPM_BUILD_ROOT
-%cabal_install
-%cabal_pkg_conf
-
-%ghc_gen_filelists
-%ghc_strip_dynlinked
+%ghc_lib_install
 
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 
+%ghc_binlib_package -o 1.17-1
+
+
 %changelog
+* Mon Jul 19 2010 Jens Petersen <petersen@redhat.com> - 1.17-1
+- 1.17 release
+- use ghc-rpm-macros-0.8.1 macros: update to cabal2spec-0.22.1
+- add hscolour and obsolete doc subpackage
+
 * Sat Jun 26 2010 Jens Petersen <petersen@redhat.com> - 1.16-3
 - strip dynlinked files (cabal2spec-0.21.4)
 
