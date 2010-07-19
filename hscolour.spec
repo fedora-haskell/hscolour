@@ -38,7 +38,7 @@ BuildRequires:  hscolour
 
 %files
 %defattr(-,root,root,-)
-%doc README index.html LICENCE-GPL
+%doc LICENCE-GPL
 %attr(755,root,root) %{_bindir}/HsColour
 %{_datadir}/%{name}-%{version}
 
