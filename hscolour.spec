@@ -16,7 +16,7 @@ HTML 3.2 with font tags, HTML 4.01 with CSS, LaTeX, and mIRC chat codes.
 
 Name:           %{pkg_name}
 Version:        1.17
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Colourizes Haskell code
 
 Group:          Development/Tools
@@ -60,10 +60,13 @@ rm -rf $RPM_BUILD_ROOT
 rm -rf $RPM_BUILD_ROOT
 
 
-%ghc_binlib_package -o 1.17-1
+%ghc_binlib_package
 
 
 %changelog
+* Thu Nov 25 2010 Jens Petersen <petersen@redhat.com> - 1.17-2
+- rebuilt
+
 * Mon Jul 19 2010 Jens Petersen <petersen@redhat.com> - 1.17-1
 - 1.17 release
 - use ghc-rpm-macros-0.8.1 macros: update to cabal2spec-0.22.1
