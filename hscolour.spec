@@ -8,29 +8,23 @@
 It currently has five output formats: ANSI terminal codes,\
 HTML 3.2 with font tags, HTML 4.01 with CSS, LaTeX, and mIRC chat codes.
 
-%bcond_without shared
-%bcond_without hscolour
-
 # debuginfo is not useful for ghc
 %global debug_package %{nil}
 
 Name:           %{pkg_name}
 Version:        1.17
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Colourizes Haskell code
 
 Group:          Development/Tools
 License:        GPLv2+
 URL:            http://www.cs.york.ac.uk/fp/darcs/hscolour/
 Source0:        http://hackage.haskell.org/packages/archive/%{name}/%{version}/%{name}-%{version}.tar.gz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 # fedora ghc archs:
 ExclusiveArch:  %{ix86} x86_64 ppc alpha
 BuildRequires:  ghc, ghc-doc, ghc-prof
-BuildRequires:  ghc-rpm-macros >= 0.8.1
-%if %{with hscolour}
+BuildRequires:  ghc-rpm-macros >= 0.7.3
 BuildRequires:  hscolour
-%endif
 %{?ghc_pkg_deps:BuildRequires:  %{ghc_pkg_deps}, %(echo %{ghc_pkg_deps} | sed -e "s/\(ghc-[^, ]\+\)-devel/\1-doc,\1-prof/g")}
 
 %description
@@ -52,18 +46,16 @@ BuildRequires:  hscolour
 
 
 %install
-rm -rf $RPM_BUILD_ROOT
 %ghc_lib_install
-
-
-%clean
-rm -rf $RPM_BUILD_ROOT
 
 
 %ghc_binlib_package
 
 
 %changelog
+* Sat Jan 15 2011 Jens Petersen <petersen@redhat.com> - 1.17-3
+- update to cabal2spec-0.22.4
+
 * Thu Nov 25 2010 Jens Petersen <petersen@redhat.com> - 1.17-2
 - rebuilt
 
