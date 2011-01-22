@@ -13,7 +13,7 @@ HTML 3.2 with font tags, HTML 4.01 with CSS, LaTeX, and mIRC chat codes.
 
 Name:           %{pkg_name}
 Version:        1.17
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Colourizes Haskell code
 
 Group:          Development/Tools
@@ -53,6 +53,9 @@ BuildRequires:  hscolour
 
 
 %changelog
+* Sun Jan 23 2011 Jens Petersen <petersen@redhat.com> - 1.17-4
+- rebuild
+
 * Sat Jan 15 2011 Jens Petersen <petersen@redhat.com> - 1.17-3
 - update to cabal2spec-0.22.4
 
