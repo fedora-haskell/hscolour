@@ -13,7 +13,7 @@ HTML 3.2 with font tags, HTML 4.01 with CSS, LaTeX, and mIRC chat codes.
 
 Name:           %{pkg_name}
 Version:        1.17
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        Colourizes Haskell code
 
 Group:          Development/Tools
@@ -53,6 +53,9 @@ BuildRequires:  hscolour
 
 
 %changelog
+* Wed Feb 09 2011 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.17-5
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_15_Mass_Rebuild
+
 * Sun Jan 23 2011 Jens Petersen <petersen@redhat.com> - 1.17-4
 - rebuild
 
