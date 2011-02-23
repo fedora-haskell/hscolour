@@ -13,7 +13,7 @@ HTML 3.2 with font tags, HTML 4.01 with CSS, LaTeX, and mIRC chat codes.
 
 Name:           %{pkg_name}
 Version:        1.17
-Release:        5%{?dist}
+Release:        6%{?dist}
 Summary:        Colourizes Haskell code
 
 Group:          Development/Tools
@@ -21,7 +21,7 @@ License:        GPLv2+
 URL:            http://www.cs.york.ac.uk/fp/darcs/hscolour/
 Source0:        http://hackage.haskell.org/packages/archive/%{name}/%{version}/%{name}-%{version}.tar.gz
 # fedora ghc archs:
-ExclusiveArch:  %{ix86} x86_64 ppc alpha
+ExclusiveArch:  %{ix86} x86_64 ppc alpha sparcv9
 BuildRequires:  ghc, ghc-doc, ghc-prof
 BuildRequires:  ghc-rpm-macros >= 0.7.3
 BuildRequires:  hscolour
@@ -53,6 +53,9 @@ BuildRequires:  hscolour
 
 
 %changelog
+* Wed Feb 23 2011 Fabio M. Di Nitto <fdinitto@redhat.com> - 1.17-6
+- enable build on sparcv9
+
 * Wed Feb 09 2011 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.17-5
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_15_Mass_Rebuild
 
