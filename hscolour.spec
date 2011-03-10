@@ -1,7 +1,5 @@
 # Updated to cabal2spec-0.22.2 and ghc-rpm-macros-0.8.1
 
-%global without_hscolour 1
-
 %global pkg_name hscolour
 
 %global common_summary Haskell %{pkg_name} library
@@ -15,7 +13,7 @@ HTML 3.2 with font tags, HTML 4.01 with CSS, LaTeX, and mIRC chat codes.
 
 Name:           %{pkg_name}
 Version:        1.17
-Release:        7%{?dist}
+Release:        8%{?dist}
 Summary:        Colourizes Haskell code
 
 Group:          Development/Tools
@@ -26,7 +24,7 @@ Source0:        http://hackage.haskell.org/packages/archive/%{name}/%{version}/%
 ExclusiveArch:  %{ix86} x86_64 ppc alpha sparcv9
 BuildRequires:  ghc, ghc-doc, ghc-prof
 BuildRequires:  ghc-rpm-macros >= 0.7.3
-#BuildRequires:  hscolour
+BuildRequires:  hscolour
 %{?ghc_pkg_deps:BuildRequires:  %{ghc_pkg_deps}, %(echo %{ghc_pkg_deps} | sed -e "s/\(ghc-[^, ]\+\)-devel/\1-doc,\1-prof/g")}
 
 %description
@@ -55,6 +53,9 @@ BuildRequires:  ghc-rpm-macros >= 0.7.3
 
 
 %changelog
+* Thu Mar 10 2011 Jens Petersen <petersen@redhat.com> - 1.17-8
+- enable source hscolour again
+
 * Thu Mar 10 2011 Jens Petersen <petersen@redhat.com> - 1.17-7
 - temporily disable hscolour for ghc-7.0.2 bootstrap
 
