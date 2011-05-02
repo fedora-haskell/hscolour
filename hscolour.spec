@@ -1,5 +1,3 @@
-# Updated to cabal2spec-0.22.2 and ghc-rpm-macros-0.8.1
-
 %global pkg_name hscolour
 
 %global common_summary Haskell %{pkg_name} library
@@ -24,7 +22,9 @@ Source0:        http://hackage.haskell.org/packages/archive/%{name}/%{version}/%
 ExclusiveArch:  %{ix86} x86_64 ppc alpha sparcv9
 BuildRequires:  ghc, ghc-doc, ghc-prof
 BuildRequires:  ghc-rpm-macros >= 0.7.3
+%if %{undefined without_hscolour}
 BuildRequires:  hscolour
+%endif
 %{?ghc_pkg_deps:BuildRequires:  %{ghc_pkg_deps}, %(echo %{ghc_pkg_deps} | sed -e "s/\(ghc-[^, ]\+\)-devel/\1-doc,\1-prof/g")}
 
 %description
