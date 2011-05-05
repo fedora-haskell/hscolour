@@ -8,11 +8,12 @@ HTML 3.2 with font tags, HTML 4.01 with CSS, LaTeX, and mIRC chat codes.
 
 # debuginfo is not useful for ghc
 %global debug_package %{nil}
-%global without_hscolour 1
+# build without hscolour when ghc is re-based (replace # by %)
+#global without_hscolour 1
 
 Name:           %{pkg_name}
 Version:        1.17
-Release:        9%{?dist}
+Release:        10%{?dist}
 Summary:        Colourizes Haskell code
 
 Group:          Development/Tools
@@ -54,6 +55,9 @@ BuildRequires:  hscolour
 
 
 %changelog
+* Thu May 05 2011 Jiri Skala <jskala@redhat.com> - 1.17-10
+- enable source hscolour again
+
 * Tue May 03 2011 Jiri Skala <jskala@redhat.com> - 1.17-9
 - temporily disable hscolour for ghc-7.0.2 bootstrap on ppc64
 
