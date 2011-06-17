@@ -1,7 +1,8 @@
 %global pkg_name hscolour
 
-# use this to bootstrap after building a new ghc version
-%ghc_bootstrap
+# use following to bootstrap after building a new ghc version:
+%{?ghc_bootstrap}
+%global without_hscolour 1
 
 %global common_summary Haskell %{pkg_name} library
 
