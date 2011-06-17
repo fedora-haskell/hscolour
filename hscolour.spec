@@ -2,18 +2,17 @@
 
 %global common_summary Haskell %{pkg_name} library
 
-%global common_description hscolour is a small Haskell package to colourize Haskell code.\
-It currently has five output formats: ANSI terminal codes,\
-HTML 3.2 with font tags, HTML 4.01 with CSS, LaTeX, and mIRC chat codes.
+%global common_description hscolour is a small Haskell script to colourize Haskell code.\
+It currently has six output formats: ANSI terminal codes, HTML 3.2\
+with <font> tags, HTML 4.01 with CSS, XHTML 1.0 with inline CSS\
+styling, LaTeX, and mIRC chat client codes.
 
-# debuginfo is not useful for ghc
-%global debug_package %{nil}
-# build without hscolour when ghc is re-based (replace # by %)
-#global without_hscolour 1
+# build without self by default
+%global without_hscolour 1
 
 Name:           %{pkg_name}
-Version:        1.17
-Release:        10%{?dist}
+Version:        1.19
+Release:        1%{?dist}
 Summary:        Colourizes Haskell code
 
 Group:          Development/Tools
@@ -22,21 +21,15 @@ URL:            http://www.cs.york.ac.uk/fp/darcs/hscolour/
 Source0:        http://hackage.haskell.org/packages/archive/%{name}/%{version}/%{name}-%{version}.tar.gz
 # fedora ghc archs:
 ExclusiveArch:  %{ix86} x86_64 ppc alpha sparcv9 ppc64
-BuildRequires:  ghc, ghc-doc, ghc-prof
-BuildRequires:  ghc-rpm-macros >= 0.7.3
+BuildRequires:  ghc-Cabal-devel
+BuildRequires:  ghc-rpm-macros
 %if %{undefined without_hscolour}
 BuildRequires:  hscolour
 %endif
-%{?ghc_pkg_deps:BuildRequires:  %{ghc_pkg_deps}, %(echo %{ghc_pkg_deps} | sed -e "s/\(ghc-[^, ]\+\)-devel/\1-doc,\1-prof/g")}
+BuildRequires:  ghc-containers-prof
 
 %description
 %{common_description}
-
-%files
-%defattr(-,root,root,-)
-%doc LICENCE-GPL
-%attr(755,root,root) %{_bindir}/HsColour
-%{_datadir}/%{name}-%{version}
 
 
 %prep
@@ -51,10 +44,22 @@ BuildRequires:  hscolour
 %ghc_lib_install
 
 
+%files
+%defattr(-,root,root,-)
+%doc LICENCE-GPL
+%attr(755,root,root) %{_bindir}/HsColour
+%{_datadir}/%{name}-%{version}
+
+
 %ghc_binlib_package
 
 
 %changelog
+* Fri Jun 17 2011 Jens Petersen <petersen@redhat.com> - 1.19-1
+- update to 1.19
+- disable self BR by default
+- just depends on containers
+
 * Thu May 05 2011 Jiri Skala <jskala@redhat.com> - 1.17-10
 - enable source hscolour again
 
