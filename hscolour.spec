@@ -1,14 +1,14 @@
 %global pkg_name hscolour
 
+# use this to bootstrap after building a new ghc version
+%ghc_bootstrap
+
 %global common_summary Haskell %{pkg_name} library
 
 %global common_description hscolour is a small Haskell script to colourize Haskell code.\
 It currently has six output formats: ANSI terminal codes, HTML 3.2\
 with <font> tags, HTML 4.01 with CSS, XHTML 1.0 with inline CSS\
 styling, LaTeX, and mIRC chat client codes.
-
-# build without self by default
-%global without_hscolour 1
 
 Name:           %{pkg_name}
 Version:        1.19
@@ -22,7 +22,7 @@ Source0:        http://hackage.haskell.org/packages/archive/%{name}/%{version}/%
 # fedora ghc archs:
 ExclusiveArch:  %{ix86} x86_64 ppc alpha sparcv9 ppc64
 BuildRequires:  ghc-Cabal-devel
-BuildRequires:  ghc-rpm-macros
+BuildRequires:  ghc-rpm-macros >= 0.13.5
 %if %{undefined without_hscolour}
 BuildRequires:  hscolour
 %endif
@@ -57,7 +57,7 @@ BuildRequires:  ghc-containers-prof
 %changelog
 * Fri Jun 17 2011 Jens Petersen <petersen@redhat.com> - 1.19-1
 - update to 1.19
-- disable self BR by default
+- use ghc_bootstrap from ghc-rpm-macros-0.13.5
 - just depends on containers
 
 * Thu May 05 2011 Jiri Skala <jskala@redhat.com> - 1.17-10
