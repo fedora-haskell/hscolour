@@ -1,8 +1,8 @@
 %global pkg_name hscolour
 
 # use following to bootstrap after building a new ghc version:
-%{?ghc_bootstrap}
-%global without_hscolour 1
+#%%{?ghc_bootstrap}
+#%%global without_hscolour 1
 
 %global common_summary Haskell %{pkg_name} library
 
@@ -13,15 +13,14 @@ styling, LaTeX, and mIRC chat client codes.
 
 Name:           %{pkg_name}
 Version:        1.19
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Colourizes Haskell code
 
 Group:          Development/Tools
 License:        GPLv2+
 URL:            http://www.cs.york.ac.uk/fp/darcs/hscolour/
 Source0:        http://hackage.haskell.org/packages/archive/%{name}/%{version}/%{name}-%{version}.tar.gz
-# fedora ghc archs:
-ExclusiveArch:  %{ix86} x86_64 ppc alpha sparcv9 ppc64
+ExclusiveArch:  %{ghc_arches}
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-rpm-macros >= 0.13.5
 %if %{undefined without_hscolour}
@@ -56,6 +55,9 @@ BuildRequires:  ghc-containers-prof
 
 
 %changelog
+* Fri Jun 17 2011 Jens Petersen <petersen@redhat.com> - 1.19-2
+- use ghc_arches (cabal-0.23.2)
+
 * Fri Jun 17 2011 Jens Petersen <petersen@redhat.com> - 1.19-1
 - update to 1.19
 - use ghc_bootstrap from ghc-rpm-macros-0.13.5
