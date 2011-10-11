@@ -13,7 +13,7 @@ styling, LaTeX, and mIRC chat client codes.
 
 Name:           %{pkg_name}
 Version:        1.19
-Release:        2%{?dist}
+Release:        2%{?dist}.1
 Summary:        Colourizes Haskell code
 
 Group:          Development/Tools
@@ -55,6 +55,9 @@ BuildRequires:  ghc-containers-prof
 
 
 %changelog
+* Wed Oct 12 2011 Peter Schiffer <pschiffe@redhat.com> - 1.19-2.1
+- rebuild with new gmp
+
 * Fri Jun 17 2011 Jens Petersen <petersen@redhat.com> - 1.19-2
 - use ghc_arches (cabal-0.23.2)
 
