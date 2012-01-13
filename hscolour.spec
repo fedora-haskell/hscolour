@@ -13,7 +13,7 @@ styling, LaTeX, and mIRC chat client codes.
 
 Name:           %{pkg_name}
 Version:        1.19
-Release:        2%{?dist}.2
+Release:        3%{?dist}.2
 Summary:        Colourizes Haskell code
 
 Group:          Development/Tools
@@ -55,6 +55,9 @@ BuildRequires:  ghc-containers-prof
 
 
 %changelog
+* Fri Jan 13 2012 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.19-3.2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_17_Mass_Rebuild
+
 * Fri Oct 21 2011 Marcela Mašláňová <mmaslano@redhat.com> - 1.19-2.2
 - rebuild with new gmp without compat lib
 
