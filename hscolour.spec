@@ -1,3 +1,7 @@
+# cabal2spec-0.25.2
+# https://fedoraproject.org/wiki/Packaging:Haskell
+# https://fedoraproject.org/wiki/PackagingDrafts/Haskell
+
 %global pkg_name hscolour
 
 # use following to bootstrap after building a new ghc version:
@@ -6,26 +10,25 @@
 
 %global common_summary Haskell %{pkg_name} library
 
-%global common_description hscolour is a small Haskell script to colourize Haskell code.\
+%global common_description hscolour is a tool to colourize Haskell code.\
 It currently has six output formats: ANSI terminal codes, HTML 3.2\
 with <font> tags, HTML 4.01 with CSS, XHTML 1.0 with inline CSS\
 styling, LaTeX, and mIRC chat client codes.
 
 Name:           %{pkg_name}
 Version:        1.19
-Release:        3%{?dist}.2
+Release:        4%{?dist}
 Summary:        Colourizes Haskell code
 
 Group:          Development/Tools
 License:        GPLv2+
-URL:            http://www.cs.york.ac.uk/fp/darcs/hscolour/
+# BEGIN cabal2spec
+URL:            http://hackage.haskell.org/package/%{name}
 Source0:        http://hackage.haskell.org/packages/archive/%{name}/%{version}/%{name}-%{version}.tar.gz
 ExclusiveArch:  %{ghc_arches}
 BuildRequires:  ghc-Cabal-devel
-BuildRequires:  ghc-rpm-macros >= 0.13.5
-%if %{undefined without_hscolour}
-BuildRequires:  hscolour
-%endif
+BuildRequires:  ghc-rpm-macros %{!?without_hscolour:hscolour}
+# END cabal2spec
 BuildRequires:  ghc-containers-prof
 
 %description
@@ -44,17 +47,34 @@ BuildRequires:  ghc-containers-prof
 %ghc_lib_install
 
 
+# library subpackage
+%ghc_package
+
+%ghc_description
+
+
+# devel subpackage
+%ghc_devel_package
+
+%ghc_devel_description
+
+
+%ghc_devel_post_postun
+
+
 %files
-%defattr(-,root,root,-)
 %doc LICENCE-GPL
 %attr(755,root,root) %{_bindir}/HsColour
 %{_datadir}/%{name}-%{version}
 
 
-%ghc_binlib_package
+%ghc_files
 
 
 %changelog
+* Mon Jan 23 2012 Jens Petersen <petersen@redhat.com> - 1.19-4
+- update to cabal2spec-0.25.2
+
 * Fri Jan 13 2012 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.19-3.2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_17_Mass_Rebuild
 
