@@ -5,8 +5,8 @@
 %global pkg_name hscolour
 
 # use following to bootstrap after building a new ghc version:
-#%%{?ghc_bootstrap}
-#%%global without_hscolour 1
+%{?ghc_bootstrap}
+%global without_hscolour 1
 
 %global common_summary Haskell %{pkg_name} library
 
@@ -17,7 +17,7 @@ styling, LaTeX, and mIRC chat client codes.
 
 Name:           %{pkg_name}
 Version:        1.19
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        Colourizes Haskell code
 
 Group:          Development/Tools
@@ -68,10 +68,13 @@ BuildRequires:  ghc-containers-prof
 %{_datadir}/%{name}-%{version}
 
 
-%ghc_files
+%ghc_files LICENCE-GPL
 
 
 %changelog
+* Wed Mar 21 2012 Jens Petersen <petersen@redhat.com> - 1.19-5
+- bootstrap build
+
 * Mon Jan 23 2012 Jens Petersen <petersen@redhat.com> - 1.19-4
 - update to cabal2spec-0.25.2
 
