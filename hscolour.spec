@@ -5,9 +5,9 @@
 %global pkg_name hscolour
 
 # use following to bootstrap after building a new ghc version:
-%{?ghc_bootstrap}
-%global ghc_bootstrapping 1
-%global without_hscolour 1
+#%%{?ghc_bootstrap}
+#%%global ghc_bootstrapping 1
+#%%global without_hscolour 1
 
 %global common_summary Haskell %{pkg_name} library
 
@@ -18,7 +18,7 @@ styling, LaTeX, and mIRC chat client codes.
 
 Name:           %{pkg_name}
 Version:        1.19
-Release:        5%{?dist}
+Release:        6%{?dist}
 Summary:        Colourizes Haskell code
 
 Group:          Development/Tools
@@ -72,6 +72,9 @@ BuildRequires:  ghc-rpm-macros %{!?without_hscolour:hscolour}
 
 
 %changelog
+* Wed Mar 21 2012 Jens Petersen <petersen@redhat.com> - 1.19-6
+- normal full build
+
 * Wed Mar 21 2012 Jens Petersen <petersen@redhat.com> - 1.19-5
 - bootstrap build
 - drop the explicit containers BR
