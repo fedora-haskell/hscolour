@@ -29,7 +29,6 @@ ExclusiveArch:  %{ghc_arches}
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-rpm-macros %{!?without_hscolour:hscolour}
 # END cabal2spec
-BuildRequires:  ghc-containers-prof
 
 %description
 %{common_description}
@@ -74,6 +73,7 @@ BuildRequires:  ghc-containers-prof
 %changelog
 * Wed Mar 21 2012 Jens Petersen <petersen@redhat.com> - 1.19-5
 - bootstrap build
+- drop the explicit containers BR
 
 * Mon Jan 23 2012 Jens Petersen <petersen@redhat.com> - 1.19-4
 - update to cabal2spec-0.25.2
