@@ -6,6 +6,7 @@
 
 # use following to bootstrap after building a new ghc version:
 %{?ghc_bootstrap}
+%global ghc_bootstrapping 1
 %global without_hscolour 1
 
 %global common_summary Haskell %{pkg_name} library
