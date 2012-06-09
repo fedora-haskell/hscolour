@@ -17,8 +17,8 @@ with <font> tags, HTML 4.01 with CSS, XHTML 1.0 with inline CSS\
 styling, LaTeX, and mIRC chat client codes.
 
 Name:           %{pkg_name}
-Version:        1.19
-Release:        6%{?dist}
+Version:        1.20.2
+Release:        1%{?dist}
 Summary:        Colourizes Haskell code
 
 Group:          Development/Tools
@@ -72,6 +72,9 @@ BuildRequires:  ghc-rpm-macros %{!?without_hscolour:hscolour}
 
 
 %changelog
+* Sat Jun  9 2012 Jens Petersen <petersen@redhat.com> - 1.20.2-1
+- update to 1.20.2
+
 * Wed Mar 21 2012 Jens Petersen <petersen@redhat.com> - 1.19-6
 - normal full build
 
