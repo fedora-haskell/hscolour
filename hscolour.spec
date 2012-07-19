@@ -18,7 +18,7 @@ styling, LaTeX, and mIRC chat client codes.
 
 Name:           %{pkg_name}
 Version:        1.20.2
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Colourizes Haskell code
 
 Group:          Development/Tools
@@ -72,6 +72,9 @@ BuildRequires:  ghc-rpm-macros %{!?without_hscolour:hscolour}
 
 
 %changelog
+* Thu Jul 19 2012 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.20.2-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_18_Mass_Rebuild
+
 * Sat Jun  9 2012 Jens Petersen <petersen@redhat.com> - 1.20.2-1
 - update to 1.20.2
 
