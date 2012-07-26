@@ -1,0 +1,10 @@
+--- hscolour-1.20.2/Language/Haskell/HsColour/Anchors.hs	2012-05-30 05:56:51.000000000 +0900
++++ hscolour/Language/Haskell/HsColour/Anchors.hs	2012-07-26 19:15:10.696737130 +0900
+@@ -42,6 +42,7 @@
+                 || isURIFragmentValid x
+                 || isLower x
+                 || isUpper x = [x]
++                | ord x >= 256 = [x] -- not correct, but better than nothing
+                 | otherwise  = ['%',hexHi (ord x), hexLo (ord x)]
+           hexHi d = intToDigit (d`div`16)
+           hexLo d = intToDigit (d`mod`16)
