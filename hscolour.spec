@@ -17,8 +17,8 @@ with <font> tags, HTML 4.01 with CSS, XHTML 1.0 with inline CSS\
 styling, LaTeX, and mIRC chat client codes.
 
 Name:           %{pkg_name}
-Version:        1.20.2
-Release:        3%{?dist}
+Version:        1.20.3
+Release:        1%{?dist}
 Summary:        Colourizes Haskell code
 
 Group:          Development/Tools
@@ -30,7 +30,6 @@ ExclusiveArch:  %{ghc_arches}
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-rpm-macros %{!?without_hscolour:hscolour}
 # END cabal2spec
-Patch1:         hscolour-1.20.2-non-ascii.patch
 
 %description
 %{common_description}
@@ -38,7 +37,6 @@ Patch1:         hscolour-1.20.2-non-ascii.patch
 
 %prep
 %setup -q
-%patch1 -p1 -b .orig
 
 
 %build
@@ -74,8 +72,12 @@ Patch1:         hscolour-1.20.2-non-ascii.patch
 
 
 %changelog
+* Mon Sep 10 2012 Jens Petersen <petersen@redhat.com> - 1.20.3-1
+- update to 1.20.3, which should build with ghc-7.6
+- hscolour-1.20.2-non-ascii.patch is upstream
+
 * Thu Jul 26 2012 Jens Petersen <petersen@redhat.com> - 1.20.2-3
-- add upstream change to workaround errors with unicode points > 255
+- add upstream patch to workaround errors with unicode points > 255
 
 * Thu Jul 19 2012 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.20.2-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_18_Mass_Rebuild
