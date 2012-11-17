@@ -4,9 +4,9 @@
 %global pkg_name hscolour
 
 # use following to bootstrap after building a new ghc version:
-%{?ghc_bootstrap}
-%global ghc_bootstrapping 1
-%global without_hscolour 1
+#%%{?ghc_bootstrap}
+#%%global ghc_bootstrapping 1
+#%%global without_hscolour 1
 
 %global common_summary Colorize Haskell code
 
@@ -17,7 +17,7 @@ styling, LaTeX, and mIRC chat client codes.
 
 Name:           %{pkg_name}
 Version:        1.20.3
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        %{common_summary}
 
 # the source does not state intended GPL version
@@ -70,6 +70,9 @@ BuildRequires:  ghc-containers-devel
 
 
 %changelog
+* Sat Nov 17 2012 Jens Petersen <petersen@redhat.com> - 1.20.3-3
+- normal build
+
 * Sat Nov 17 2012 Jens Petersen <petersen@redhat.com> - 1.20.3-2
 - bootstrap
 - change license tag to GPL+ since no indication of version
