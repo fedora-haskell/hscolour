@@ -1,35 +1,35 @@
-# cabal2spec-0.25.2
 # https://fedoraproject.org/wiki/Packaging:Haskell
 # https://fedoraproject.org/wiki/PackagingDrafts/Haskell
 
 %global pkg_name hscolour
 
 # use following to bootstrap after building a new ghc version:
-#%%{?ghc_bootstrap}
-#%%global ghc_bootstrapping 1
-#%%global without_hscolour 1
+%{?ghc_bootstrap}
+%global ghc_bootstrapping 1
+%global without_hscolour 1
 
-%global common_summary Haskell %{pkg_name} library
+%global common_summary Colorize Haskell code
 
-%global common_description hscolour is a tool to colourize Haskell code.\
+%global common_description HsColour is a tool to colorize Haskell code.\
 It currently has six output formats: ANSI terminal codes, HTML 3.2\
 with <font> tags, HTML 4.01 with CSS, XHTML 1.0 with inline CSS\
 styling, LaTeX, and mIRC chat client codes.
 
 Name:           %{pkg_name}
 Version:        1.20.3
-Release:        1%{?dist}
-Summary:        Colourizes Haskell code
+Release:        2%{?dist}
+Summary:        %{common_summary}
 
-Group:          Development/Tools
-License:        GPLv2+
-# BEGIN cabal2spec
+# the source does not state intended GPL version
+License:        GPL+
 URL:            http://hackage.haskell.org/package/%{name}
 Source0:        http://hackage.haskell.org/packages/archive/%{name}/%{version}/%{name}-%{version}.tar.gz
-ExclusiveArch:  %{ghc_arches}
+
 BuildRequires:  ghc-Cabal-devel
-BuildRequires:  ghc-rpm-macros %{!?without_hscolour:hscolour}
-# END cabal2spec
+BuildRequires:  ghc-rpm-macros
+# Begin cabal-rpm deps:
+BuildRequires:  ghc-containers-devel
+# End cabal-rpm deps
 
 %description
 %{common_description}
@@ -47,13 +47,11 @@ BuildRequires:  ghc-rpm-macros %{!?without_hscolour:hscolour}
 %ghc_lib_install
 
 
-# library subpackage
 %ghc_package
 
 %ghc_description
 
 
-# devel subpackage
 %ghc_devel_package
 
 %ghc_devel_description
@@ -72,6 +70,11 @@ BuildRequires:  ghc-rpm-macros %{!?without_hscolour:hscolour}
 
 
 %changelog
+* Sat Nov 17 2012 Jens Petersen <petersen@redhat.com> - 1.20.3-2
+- bootstrap
+- change license tag to GPL+ since no indication of version
+- update with cabal-rpm
+
 * Mon Sep 10 2012 Jens Petersen <petersen@redhat.com> - 1.20.3-1
 - update to 1.20.3, which should build with ghc-7.6
 - hscolour-1.20.2-non-ascii.patch is upstream
