@@ -17,7 +17,7 @@ styling, LaTeX, and mIRC chat client codes.
 
 Name:           %{pkg_name}
 Version:        1.20.3
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        %{common_summary}
 
 # the source does not state intended GPL version
@@ -70,6 +70,9 @@ BuildRequires:  ghc-containers-devel
 
 
 %changelog
+* Thu Feb 14 2013 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.20.3-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_19_Mass_Rebuild
+
 * Sat Nov 17 2012 Jens Petersen <petersen@redhat.com> - 1.20.3-3
 - normal build
 
