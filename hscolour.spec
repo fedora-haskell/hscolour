@@ -1,5 +1,4 @@
 # https://fedoraproject.org/wiki/Packaging:Haskell
-# https://fedoraproject.org/wiki/PackagingDrafts/Haskell
 
 %global pkg_name hscolour
 
@@ -8,17 +7,10 @@
 #%%global ghc_bootstrapping 1
 #%%global without_hscolour 1
 
-%global common_summary Colorize Haskell code
-
-%global common_description HsColour is a tool to colorize Haskell code.\
-It currently has six output formats: ANSI terminal codes, HTML 3.2\
-with <font> tags, HTML 4.01 with CSS, XHTML 1.0 with inline CSS\
-styling, LaTeX, and mIRC chat client codes.
-
 Name:           %{pkg_name}
 Version:        1.20.3
-Release:        4%{?dist}
-Summary:        %{common_summary}
+Release:        5%{?dist}
+Summary:        Colorize Haskell code
 
 # the source does not state intended GPL version
 License:        GPL+
@@ -32,7 +24,28 @@ BuildRequires:  ghc-containers-devel
 # End cabal-rpm deps
 
 %description
-%{common_description}
+HsColour is a tool to colorize Haskell code.  It has following output formats:
+ANSI terminal codes (optionally XTerm-256colour codes), HTML 3.2 with
+<font> tags, HTML 4.01 with CSS (optionally  mouseover annotations),
+XHTML 1.0 with inline CSS styling, LaTeX, and mIRC chat codes.
+
+
+%package -n ghc-%{name}
+Summary:        Haskell %{name} library
+
+%description -n ghc-%{name}
+This package provides the Haskell %{name} shared library.
+
+
+%package -n ghc-%{name}-devel
+Summary:        Haskell %{name} library development files
+Requires:       ghc-compiler = %{ghc_version}
+Requires(post): ghc-compiler = %{ghc_version}
+Requires(postun): ghc-compiler = %{ghc_version}
+Requires:       ghc-%{name} = %{version}-%{release}
+
+%description -n ghc-%{name}-devel
+This package provides the Haskell %{name} library development files.
 
 
 %prep
@@ -47,17 +60,12 @@ BuildRequires:  ghc-containers-devel
 %ghc_lib_install
 
 
-%ghc_package
-
-%ghc_description
-
-
-%ghc_devel_package
-
-%ghc_devel_description
+%post -n ghc-%{name}-devel
+%ghc_pkg_recache
 
 
-%ghc_devel_post_postun
+%postun -n ghc-%{name}-devel
+%ghc_pkg_recache
 
 
 %files
@@ -66,10 +74,17 @@ BuildRequires:  ghc-containers-devel
 %{_datadir}/%{name}-%{version}
 
 
-%ghc_files LICENCE-GPL
+%files -n ghc-%{name} -f ghc-%{name}.files
+%doc LICENCE-GPL
+
+
+%files -n ghc-%{name}-devel -f ghc-%{name}-devel.files
 
 
 %changelog
+* Fri Jun 07 2013 Jens Petersen <petersen@redhat.com> - 1.20.3-5
+- update to new simplified Haskell Packaging Guidelines
+
 * Thu Feb 14 2013 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.20.3-4
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_19_Mass_Rebuild
 
