@@ -3,13 +3,13 @@
 %global pkg_name hscolour
 
 # use following to bootstrap after building a new ghc version:
-%{?ghc_bootstrap}
-%global ghc_bootstrapping 1
-%global without_hscolour 1
+#%%{?ghc_bootstrap}
+#%%global ghc_bootstrapping 1
+#%%global without_hscolour 1
 
 Name:           %{pkg_name}
 Version:        1.20.3
-Release:        5%{?dist}
+Release:        6%{?dist}
 Summary:        Colorize Haskell code
 
 # the source does not state intended GPL version
@@ -82,6 +82,9 @@ This package provides the Haskell %{name} library development files.
 
 
 %changelog
+* Thu Jun 20 2013 Jens Petersen <petersen@redhat.com> - 1.20.3-6
+- turn off bootstrap
+
 * Fri Jun 07 2013 Jens Petersen <petersen@redhat.com> - 1.20.3-5
 - update to new simplified Haskell Packaging Guidelines
 - bootstrap build
