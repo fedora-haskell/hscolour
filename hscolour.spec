@@ -3,9 +3,9 @@
 %global pkg_name hscolour
 
 # use following to bootstrap after building a new ghc version:
-#%%{?ghc_bootstrap}
-#%%global ghc_bootstrapping 1
-#%%global without_hscolour 1
+%{?ghc_bootstrap}
+%global ghc_bootstrapping 1
+%global without_hscolour 1
 
 Name:           %{pkg_name}
 Version:        1.20.3
@@ -84,6 +84,7 @@ This package provides the Haskell %{name} library development files.
 %changelog
 * Fri Jun 07 2013 Jens Petersen <petersen@redhat.com> - 1.20.3-5
 - update to new simplified Haskell Packaging Guidelines
+- bootstrap build
 
 * Thu Feb 14 2013 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.20.3-4
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_19_Mass_Rebuild
