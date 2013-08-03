@@ -9,7 +9,7 @@
 
 Name:           %{pkg_name}
 Version:        1.20.3
-Release:        6%{?dist}
+Release:        7%{?dist}
 Summary:        Colorize Haskell code
 
 # the source does not state intended GPL version
@@ -82,6 +82,9 @@ This package provides the Haskell %{name} library development files.
 
 
 %changelog
+* Sat Aug 03 2013 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.20.3-7
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_20_Mass_Rebuild
+
 * Thu Jun 20 2013 Jens Petersen <petersen@redhat.com> - 1.20.3-6
 - turn off bootstrap
 
