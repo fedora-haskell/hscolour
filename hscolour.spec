@@ -2,14 +2,12 @@
 
 %global pkg_name hscolour
 
-# use following to bootstrap after building a new ghc version:
-#%%{?ghc_bootstrap}
-#%%global ghc_bootstrapping 1
-#%%global without_hscolour 1
+# link statically to Haskell libs for easier ghc version bootstrapping
+%global ghc_without_dynamic 1
 
 Name:           %{pkg_name}
 Version:        1.20.3
-Release:        7%{?dist}
+Release:        8%{?dist}
 Summary:        Colorize Haskell code
 
 # the source does not state intended GPL version
@@ -82,6 +80,9 @@ This package provides the Haskell %{name} library development files.
 
 
 %changelog
+* Thu Feb 27 2014 Jens Petersen <petersen@redhat.com> - 1.20.3-8
+- link executable to Haskell libs statically for easier ghc package bootstrapping
+
 * Sat Aug 03 2013 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.20.3-7
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_20_Mass_Rebuild
 
