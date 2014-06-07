@@ -7,7 +7,7 @@
 
 Name:           %{pkg_name}
 Version:        1.20.3
-Release:        8%{?dist}
+Release:        9%{?dist}
 Summary:        Colorize Haskell code
 
 # the source does not state intended GPL version
@@ -80,6 +80,9 @@ This package provides the Haskell %{name} library development files.
 
 
 %changelog
+* Sat Jun 07 2014 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.20.3-9
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_21_Mass_Rebuild
+
 * Thu Feb 27 2014 Jens Petersen <petersen@redhat.com> - 1.20.3-8
 - link executable to Haskell libs statically for easier ghc package bootstrapping
 
