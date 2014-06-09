@@ -5,6 +5,11 @@
 # link statically to Haskell libs for easier ghc version bootstrapping
 %global ghc_without_dynamic 1
 
+# use following to bootstrap for a new arch:
+#%%{?ghc_bootstrap}
+#%%global ghc_bootstrapping 1
+#%%global without_hscolour 1
+
 Name:           %{pkg_name}
 Version:        1.20.3
 Release:        9%{?dist}
